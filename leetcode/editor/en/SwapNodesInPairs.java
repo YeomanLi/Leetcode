@@ -30,6 +30,17 @@ public class SwapNodesInPairs{
  */
 class Solution {
     /**
+     * recursive solution
+     */
+    public ListNode swapPairs(ListNode head) {
+        if (null == head || null == head.next)  return head;
+        ListNode newHead = head.next;
+        head.next = swapPairs(head.next.next);
+        newHead.next = head;
+        return newHead;
+    }
+    
+    /**
      * interactive solution
      */
     public ListNode swapPairs(ListNode head) {
@@ -49,17 +60,6 @@ class Solution {
             curr = temp;
         }
         return newHead.next;
-    }
-
-    /**
-     * recursive solution
-     */
-    public ListNode swapPairs(ListNode head) {
-        if (null == head || null == head.next)  return head;
-        ListNode newHead = head.next;
-        head.next = swapPairs(head.next.next);
-        newHead.next = head;
-        return newHead;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
